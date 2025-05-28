@@ -4,4 +4,4 @@ You go through a mysterious forest and have to navigate your way through. On you
 Once you interact with them, an RPG menu opens where you need to fend off the ATCS students to continue your way through the forest. 
 There might even be a surprise at the end… Mr. Sen is protecting the forest!
 
-Group: Ryan, Dharma, Sam, Miguel T.
+Group: Dharma, Ryan, Sam, Miguel T.
