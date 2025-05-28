@@ -83,6 +83,7 @@ crashlytics-build.properties
 /projectSettingsUpdater.xml
 /.idea.CS-Forest.iml
 /modules.xml
+.idea/
 /contentModel.xml
 # Editor-based HTTP Client requests
 /httpRequests/
