@@ -5,22 +5,17 @@ using UnityEngine.InputSystem;
 public class PlayerMovementAndCamera : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Transform cameraTransform;
 
     private Vector2 movement;
     private PlayerControls controls;
-    private CharacterController controller;
-    public bool isGrounded;
-    public float jumpHeight = 4;
-    public float gravity = -9.8f;
 
     void Awake()
     {
         controls = new PlayerControls();
-        controller = GetComponent<CharacterController>();
+
         controls.GamePlay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.GamePlay.Move.canceled += ctx => movement = Vector2.zero;
     }
@@ -30,7 +25,6 @@ public class PlayerMovementAndCamera : MonoBehaviour
 
     void Update()
     {
-        isGrounded = controller.isGrounded;
         float move = movement.x;
 
         transform.position += new Vector3(move * moveSpeed * Time.deltaTime, 0f, 0f);
@@ -42,12 +36,4 @@ public class PlayerMovementAndCamera : MonoBehaviour
 
         cameraTransform.position = new Vector3(transform.position.x, cameraTransform.position.y, cameraTransform.position.z);
     }
-
-    public void Jump(){
-        if(isGrounded)
-        {
-            movement.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-        }
-    }
-
 }
