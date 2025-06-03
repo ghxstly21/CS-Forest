@@ -12,7 +12,6 @@ public class PlayerMovementAndCamera : MonoBehaviour
 
     private Vector2 movement;
     private PlayerControls controls;
-    private CharacterController controller;
     public bool isGrounded;
     public float jumpHeight = 4;
     public float gravity = -9.8f;
@@ -20,7 +19,6 @@ public class PlayerMovementAndCamera : MonoBehaviour
     void Awake()
     {
         controls = new PlayerControls();
-        controller = GetComponent<CharacterController>();
         controls.GamePlay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.GamePlay.Move.canceled += ctx => movement = Vector2.zero;
     }
@@ -30,7 +28,6 @@ public class PlayerMovementAndCamera : MonoBehaviour
 
     void Update()
     {
-        isGrounded = controller.isGrounded;
         float move = movement.x;
 
         transform.position += new Vector3(move * moveSpeed * Time.deltaTime, 0f, 0f);
