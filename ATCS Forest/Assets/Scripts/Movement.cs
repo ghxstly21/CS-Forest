@@ -28,6 +28,6 @@ public class PlayerMovement2D : MonoBehaviour
     void Update()
     {
         Vector2 input = controls.GamePlay.Move.ReadValue<Vector2>();
-        rb.velocity = new Vector2(input.x * speed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(input.x * speed, rb.linearVelocity.y);
     }
 }
