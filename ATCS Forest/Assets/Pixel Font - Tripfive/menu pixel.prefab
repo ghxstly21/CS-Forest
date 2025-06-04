@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 23420551826632114}
   - component: {fileID: 102362823683043728}
   m_Layer: 0
-  m_Name: Start Text
+  m_Name: menu pixel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
