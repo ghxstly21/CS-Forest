@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 2f;
-    public float stopDistance = 1.5f;
+    public float stopDistance = 1.5f; 
     private Transform player;
     private Animator animator;
 
@@ -15,20 +15,25 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (player == null) return;
+
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance > stopDistance)
         {
-            // Move toward player
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-            animator.SetBool("isWalking", true);
+            Vector2 direction = (player.position - transform.position).normalized;
+            transform.position += (Vector3)(direction * speed * Time.deltaTime);
+
+            if (animator != null)
+                animator.SetBool("isWalking", true);
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            if (animator != null)
+                animator.SetBool("isWalking", false);
+
         }
 
-        // Flip sprite to face player
         if (player.position.x < transform.position.x)
             transform.localScale = new Vector3(-1, 1, 1);
         else
