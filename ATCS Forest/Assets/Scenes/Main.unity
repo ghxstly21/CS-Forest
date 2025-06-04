@@ -541,10 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d978f265930db7d4fa205efe3ccbb586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  animator: {fileID: 1362529862}
-  spriteRenderer: {fileID: 1362529860}
-  cameraTransform: {fileID: 209300020}
+  speed: 5
 --- !u!114 &1362529865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,6 +653,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3935349366575579597, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935349366575579597, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935349366575579597, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.11975
       objectReference: {fileID: 0}
@@ -694,6 +699,22 @@ PrefabInstance:
     - target: {fileID: 3935349366575579597, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500486901100696159, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500486901100696159, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_Simulated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500486901100696159, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500486901100696159, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_AngularDamping
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5623547484910034960, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: speed

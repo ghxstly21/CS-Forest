@@ -1,7 +1,6 @@
 using hi;
 using UnityEngine;
-using UnityEngine.InputSystem; // IMPORTANT
-
+using UnityEngine.InputSystem; 
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject projectilePrefab;
