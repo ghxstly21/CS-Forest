@@ -1,6 +1,5 @@
 fileFormatVersion: 2
 guid: 548351ef8e8c4f645869dfa873b671a4
-guid: be4e9e8f3fa5de14896fb5e767102ad7
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -160,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      red-helicopter-thing_0: 3558147341690599358
+      red-helicopter-thing_1: -775709979939279202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
