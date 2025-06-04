@@ -706,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5500486901100696159, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: m_Simulated
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5500486901100696159, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: m_GravityScale
@@ -727,6 +727,10 @@ PrefabInstance:
     - target: {fileID: 6562738370463113059, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: m_Name
       value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915922435783235802, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
