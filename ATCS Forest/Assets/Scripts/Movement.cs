@@ -5,20 +5,17 @@ using UnityEngine.InputSystem;
 public class PlayerMovementAndCamera : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Transform cameraTransform;
 
     private Vector2 movement;
     private PlayerControls controls;
-    public bool isGrounded;
-    public float jumpHeight = 4;
-    public float gravity = -9.8f;
 
     void Awake()
     {
         controls = new PlayerControls();
+
         controls.GamePlay.Move.performed += ctx => movement = ctx.ReadValue<Vector2>();
         controls.GamePlay.Move.canceled += ctx => movement = Vector2.zero;
     }
@@ -39,12 +36,4 @@ public class PlayerMovementAndCamera : MonoBehaviour
 
         cameraTransform.position = new Vector3(transform.position.x, cameraTransform.position.y, cameraTransform.position.z);
     }
-
-    public void Jump(){
-        if(isGrounded)
-        {
-            movement.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-        }
-    }
-
 }
