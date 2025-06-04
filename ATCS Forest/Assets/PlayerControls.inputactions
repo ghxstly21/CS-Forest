@@ -26,6 +26,7 @@
                 {
                     "name": "Shoot",
                     "type": "Button",
+                    "id": "874d3880-b282-4380-83f7-19f9058e3bcc",
                     "id": "9190eb2f-f469-4880-b331-09b9752fe977",
                     "expectedControlType": "",
                     "processors": "",
@@ -147,6 +148,7 @@
                 {
                     "name": "",
                     "id": "99ffe93d-6893-4b2c-9693-5965252b1f05",
+                    "path": "<Keyboard>/w",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -157,6 +159,7 @@
                 },
                 {
                     "name": "",
+                    "id": "8a4fada9-a080-4d0f-88ef-ec0ac7fac7c9",
                     "id": "8f819762-07f7-4690-b158-3f27f1c531ea",
                     "path": "<Keyboard>/space",
                     "interactions": "",
