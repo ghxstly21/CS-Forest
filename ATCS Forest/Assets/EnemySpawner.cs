@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         int index = Random.Range(0, enemyPrefabs.Length);
-        Vector3 spawnPosition = new Vector3(nextSpawnX, player.position.y + Random.Range(-0.5f, 0.5f), 0);
+        Vector3 spawnPosition = new Vector3(nextSpawnX, player.position.y +3+ Random.Range(-0.5f, 0.5f), 0);
         Instantiate(enemyPrefabs[index], spawnPosition, Quaternion.identity);
     }
 }

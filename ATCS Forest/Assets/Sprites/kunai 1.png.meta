@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ef5e9512b7089cb45ada5b7fd40173ff
+guid: 7d024169c45f1414998e2333e9ce083c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2600836616046933023
-    second: orange-tank-enemy_0
+      213: -2769885487739577302
+    second: kunai 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: orange-tank-enemy_0
+      name: kunai 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 125
-        height: 256
+        y: 23
+        width: 64
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f147e4a5f17081420800000000000000
-      internalID: 2600836616046933023
+      spriteID: a2cd5ca03d36f89d0800000000000000
+      internalID: -2769885487739577302
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      orange-tank-enemy_0: 2600836616046933023
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
