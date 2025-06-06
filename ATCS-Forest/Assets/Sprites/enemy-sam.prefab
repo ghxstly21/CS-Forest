@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7998297899570425622}
   - component: {fileID: 6856429919620042562}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: enemy-sam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
