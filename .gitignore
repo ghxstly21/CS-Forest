@@ -94,3 +94,4 @@ crashlytics-build.properties
 .vscode/
 UserSettings/
 
+*.cache

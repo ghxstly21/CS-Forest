@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: be4e9e8f3fa5de14896fb5e767102ad7
+guid: ef5e9512b7089cb45ada5b7fd40173ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3558147341690599358
-    second: red-helicopter-thing_0
-  - first:
-      213: -775709979939279202
-    second: red-helicopter-thing_1
+      213: 2600836616046933023
+    second: orange-tank-enemy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: red-helicopter-thing_0
+      name: orange-tank-enemy_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 135
-        width: 122
-        height: 114
+        x: 0
+        y: 0
+        width: 125
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eb7f7f7c724116130800000000000000
-      internalID: 3558147341690599358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: red-helicopter-thing_1
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 3
-        width: 122
-        height: 114
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9e6ef412ef1c35f0800000000000000
-      internalID: -775709979939279202
+      spriteID: f147e4a5f17081420800000000000000
+      internalID: 2600836616046933023
       vertices: []
       indices: 
       edges: []
@@ -159,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      orange-tank-enemy_0: 2600836616046933023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
