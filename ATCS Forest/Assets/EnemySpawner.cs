@@ -1,40 +1,69 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
-    public Transform player;
-    public float spawnDistance = 20f; 
-    public float minSpawnInterval = 5f;
-    public float maxSpawnInterval = 10f;
+    public TMP_Text enemiesLeftText;
+    public GameObject enemyPrefab;
+    public Transform[] spawnPoints;
+    public int enemiesPerWave = 10;
+    public float spawnInterval = 3f;
 
-    private float nextSpawnX;
+    private int enemiesSpawned = 0;
+    private int enemiesAlive = 0;
+    private float spawnTimer;
+
+    public string nextSceneName;
 
     void Start()
     {
-        nextSpawnX = player.position.x + spawnDistance;
+        spawnTimer = spawnInterval;
+        UpdateEnemiesLeftText();
     }
 
     void Update()
     {
-        if (player.position.x >= nextSpawnX - spawnDistance)
+        if (enemiesSpawned < enemiesPerWave)
         {
-            SpawnEnemy();
-            float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
-            nextSpawnX += interval + spawnDistance;
+            spawnTimer -= Time.deltaTime;
+            if (spawnTimer <= 0f)
+            {
+                SpawnEnemy();
+                spawnTimer = spawnInterval;
+            }
         }
+        else if (enemiesAlive == 0)
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
+
+        UpdateEnemiesLeftText();
     }
 
     void SpawnEnemy()
     {
-        if (enemyPrefabs.Length == 0)
-        {
-            Debug.LogWarning("EnemySpawner: No enemy prefabs assigned!");
-            return;
-        }
+        int index = Random.Range(0, spawnPoints.Length);
+        GameObject enemy = Instantiate(enemyPrefab, spawnPoints[index].position, Quaternion.identity);
 
-        int index = Random.Range(0, enemyPrefabs.Length);
-        Vector3 spawnPosition = new Vector3(nextSpawnX, player.position.y +3+ Random.Range(-0.5f, 0.5f), 0);
-        Instantiate(enemyPrefabs[index], spawnPosition, Quaternion.identity);
+        enemiesSpawned++;
+        enemiesAlive++;
+
+        EnemyHelicopter enemyScript = enemy.GetComponent<EnemyHelicopter>();
+        if (enemyScript != null)
+        {
+            enemyScript.OnEnemyDeath += EnemyDied;
+        }
+    }
+
+    void EnemyDied()
+    {
+        enemiesAlive--;
+        UpdateEnemiesLeftText();
+    }
+
+    void UpdateEnemiesLeftText()
+    {
+        enemiesLeftText.text = $"Enemies Left: {enemiesAlive}";
     }
 }
