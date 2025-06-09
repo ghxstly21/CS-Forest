@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement2D : MonoBehaviour
 {
     public float speed = 5f;
-    public float gravityScale = 1f;
-    public float minJumpHeight = 6f;
-    public float maxJumpHeight = 8f;
+    public float gravityScale = 2f;
+    public float minJumpHeight = 0.9f;
+    public float maxJumpHeight = 3f;
 
     Rigidbody2D rb;
     PlayerControls controls;
