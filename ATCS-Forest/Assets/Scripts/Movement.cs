@@ -7,9 +7,11 @@ public class PlayerMovement2D : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerControls controls;
+    public GameObject player;
 
     void Awake()
     {
+        player.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         controls = new PlayerControls();
         controls.GamePlay.Enable(); 
