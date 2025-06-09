@@ -39,6 +39,8 @@ public class EnemyHelicopter : MonoBehaviour
 
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
         if (player == null || enemyShootPoint == null)
             return;
 

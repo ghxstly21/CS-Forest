@@ -933,7 +933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  stopDistance: 10
+  stopDistance: 5
   enemyShootPoint: {fileID: 1462031413}
   projectilePrefab: {fileID: 9116275236894648063, guid: 3ea119ea975889442bd627d7358435f3, type: 3}
   shootCooldown: 1
