@@ -14,14 +14,23 @@ public class EnemyShoot : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        
+        if (EnemyShootPoint == null)
+        {
+            EnemyShootPoint = transform.Find("EnemyShootPoint");
+            if (EnemyShootPoint == null)
+            {
+                Debug.LogError("EnemyShootPoint not assigned and not found as a child!");
+            }
+        }
     }
 
     void Update()
     {
+        if (player == null || EnemyShootPoint == null) return;
+
         cooldownTimer -= Time.deltaTime;
 
-        if (cooldownTimer <= 0f && player != null)
+        if (cooldownTimer <= 0f)
         {
             Shoot();
             cooldownTimer = shootCooldown;
@@ -40,6 +49,10 @@ public class EnemyShoot : MonoBehaviour
         if (rb != null)
         {
             rb.linearVelocity = direction * bulletSpeed;
+        }
+        else
+        {
+            Debug.LogWarning("Projectile prefab is missing a Rigidbody2D!");
         }
     }
 }
