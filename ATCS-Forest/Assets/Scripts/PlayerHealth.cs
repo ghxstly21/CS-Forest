@@ -1,44 +1,49 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 5;
+    public int maxHealth = 3;
     public int currentHealth;
 
-    public Image healthBarFill; // Drag the red bar image here in the Inspector
+    public GameObject gameOverPanel;  // Assign this in the inspector
+    public GameObject playerMovementScriptObject;  // Optional: drag the player object to disable movement
 
     void Start()
     {
         currentHealth = maxHealth;
-        UpdateHealthUI();
+        gameOverPanel.SetActive(false); // Hide Game Over UI at start
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int amount)
     {
-        currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-
-        Debug.Log($"🩸 Player took {damage} damage. Current health: {currentHealth}");
-
-        UpdateHealthUI();
+        currentHealth -= amount;
+        Debug.Log("Player took damage. Current HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
-            Debug.Log("💀 Player died.");
-            // Add death handling here if needed
+            Die();
         }
     }
 
-    void UpdateHealthUI()
+    void Die()
     {
-        if (healthBarFill != null)
+        Debug.Log("💀 Player Died");
+
+        // Disable player movement script (optional)
+        if (playerMovementScriptObject != null)
         {
-            healthBarFill.fillAmount = (float)currentHealth / maxHealth;
+            playerMovementScriptObject.SetActive(false);
         }
-        else
-        {
-            Debug.LogWarning("⚠️ Health bar fill image not assigned!");
-        }
+
+        // Show Game Over panel
+        gameOverPanel.SetActive(true);
+    }
+
+    // Called by UI button
+    public void Respawn()
+    {
+        SceneManager.LoadScene(2); // Scene 2 = Level 1
     }
 }

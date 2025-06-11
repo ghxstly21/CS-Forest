@@ -21,7 +21,7 @@ public class EnemyHelicopter : MonoBehaviour
 
     // Invincibility
     private bool isInvincible = false;
-    private float invincibilityDuration = 1f;  // 1 second invincibility
+    private float invincibilityDuration = 0.4f;  // 1 second invincibility
     private float invincibilityTimer = 0f;
 
     void Start()
