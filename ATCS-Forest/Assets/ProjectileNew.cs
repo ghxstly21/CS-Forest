@@ -13,49 +13,33 @@ public class ProjectileNew : MonoBehaviour
 
         if (!isEnemyBullet)
         {
-            // First check for Boss
-            BossHelicopter boss = collision.GetComponent<BossHelicopter>();
-            if (boss != null)
+            if (collision.TryGetComponent(out BossHelicopter boss))
             {
                 boss.TakeDamage(damage);
                 Debug.Log("💥 Hit BOSS for " + damage + " damage.");
-                hasHit = true;
-                Destroy(gameObject);
-                return;
             }
-
-            // Then check for regular enemy
-            EnemyHelicopter enemy = collision.GetComponent<EnemyHelicopter>();
-            if (enemy != null)
+            else if (collision.TryGetComponent(out EnemyHelicopter enemy))
             {
                 enemy.TakeDamage(damage);
                 Debug.Log("💥 Hit ENEMY for " + damage + " damage.");
-                hasHit = true;
-                Destroy(gameObject);
-                return;
-            }
-        }
-        else if (isEnemyBullet && collision.CompareTag("Player"))
-        {
-            PlayerHealth player = collision.GetComponentInParent<PlayerHealth>();
-            if (player != null)
-            {
-                player.TakeDamage(damage);
-                Debug.Log("💥 Hit PLAYER for " + damage + " damage.");
-            }
-            else
-            {
-                Debug.LogWarning("⚠️ PlayerHealth not found on Player!");
             }
 
             hasHit = true;
             Destroy(gameObject);
         }
-
-        // If it hits something else like a wall
-        if (!hasHit)
+        else if (isEnemyBullet && collision.CompareTag("Player"))
         {
-            Debug.Log("🧱 Projectile hit " + collision.name + " and was destroyed.");
+            if (collision.GetComponentInParent<PlayerHealth>() is PlayerHealth player)
+            {
+                player.TakeDamage(damage);
+                Debug.Log("💥 Hit PLAYER for " + damage + " damage.");
+            }
+
+            hasHit = true;
+            Destroy(gameObject);
+        }
+        else
+        {
             hasHit = true;
             Destroy(gameObject);
         }

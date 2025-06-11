@@ -7,13 +7,13 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
 
-    public GameObject gameOverPanel;  // Assign this in the inspector
-    public GameObject playerMovementScriptObject;  // Optional: drag the player object to disable movement
+    public GameObject gameOverPanel;
+    public GameObject playerMovementScriptObject;
 
     void Start()
     {
         currentHealth = maxHealth;
-        gameOverPanel.SetActive(false); // Hide Game Over UI at start
+        gameOverPanel.SetActive(false);
     }
 
     public void TakeDamage(int amount)
@@ -31,19 +31,30 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("💀 Player Died");
 
-        // Disable player movement script (optional)
         if (playerMovementScriptObject != null)
         {
             playerMovementScriptObject.SetActive(false);
         }
 
-        // Show Game Over panel
         gameOverPanel.SetActive(true);
     }
 
-    // Called by UI button
     public void Respawn()
     {
-        SceneManager.LoadScene(2); // Scene 2 = Level 1
+        SceneManager.LoadScene(2);
+    }
+
+    // 👇 ADD THESE TWO METHODS
+    public void RestoreToFull()
+    {
+        currentHealth = maxHealth;
+        Debug.Log("❤️ Fully healed to " + currentHealth + " HP");
+    }
+
+    public void IncreaseMaxHealth()
+    {
+        maxHealth += 1;
+        currentHealth = maxHealth;
+        Debug.Log("💪 Max health increased to " + maxHealth + " and healed to full.");
     }
 }

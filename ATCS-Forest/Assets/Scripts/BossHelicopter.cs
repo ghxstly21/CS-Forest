@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class BossHelicopter : MonoBehaviour
 {
-    public static int cloneCounter = 0;
-    public static int maxClones = 9; // Dies on the 10th hit
-
     public delegate void EnemyDeathHandler();
     public event EnemyDeathHandler OnEnemyDeath;
 
     [Header("Boss Settings")]
     public float stopDistance = 7f;
-    public int maxHealth = 1; // Keep this 1 since we're faking multiple hits
+    public int maxHealth = 20; // Real max health now
+    public int xpReward = 100; // Amount of XP to give on death
 
     [Header("References")]
     public Transform enemyShootPoint;
@@ -49,7 +47,6 @@ public class BossHelicopter : MonoBehaviour
 
     void Update()
     {
-        // Dynamically find player if not found yet
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -60,7 +57,7 @@ public class BossHelicopter : MonoBehaviour
             }
             else
             {
-                return; // Wait until player is found
+                return;
             }
         }
 
@@ -69,7 +66,6 @@ public class BossHelicopter : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
         Patrol();
 
-        // Shoot if player is within range
         if (distance <= stopDistance)
         {
             shootTimer -= Time.deltaTime;
@@ -80,7 +76,6 @@ public class BossHelicopter : MonoBehaviour
             }
         }
 
-        // Spawn mini helicopters periodically
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
         {
@@ -88,7 +83,6 @@ public class BossHelicopter : MonoBehaviour
             spawnTimer = spawnCooldown;
         }
 
-        // Flip to face player
         transform.localScale = new Vector3(player.position.x < transform.position.x ? -3 : 3, 3, 3);
     }
 
@@ -127,8 +121,6 @@ public class BossHelicopter : MonoBehaviour
     {
         if (miniHelicopterPrefabs == null || miniHelicopterPrefabs.Length == 0) return;
 
-        Debug.Log("🚁 Attempting to spawn mini helicopter...");
-
         int prefabIndex = Random.Range(0, miniHelicopterPrefabs.Length);
         GameObject selectedPrefab = miniHelicopterPrefabs[prefabIndex];
 
@@ -155,17 +147,15 @@ public class BossHelicopter : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            if (cloneCounter < maxClones)
+            Debug.Log("💥 Boss actually destroyed!");
+            OnEnemyDeath?.Invoke();
+
+            // Give XP to player
+            PlayerXP xp = FindObjectOfType<PlayerXP>();
+            if (xp != null)
             {
-                // Clone before destroying to fake survival
-                Instantiate(gameObject, transform.position, transform.rotation);
-                cloneCounter++;
-                Debug.Log($"👻 Clone {cloneCounter} spawned. Boss not dead yet.");
-            }
-            else
-            {
-                Debug.Log("💥 Boss actually destroyed!");
-                OnEnemyDeath?.Invoke();
+                xp.GainXP(xpReward);
+                Debug.Log($"🟢 Player gained {xpReward} XP for killing the boss.");
             }
 
             Destroy(gameObject);

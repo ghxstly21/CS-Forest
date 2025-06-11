@@ -6,6 +6,7 @@ public class EnemyHelicopter : MonoBehaviour
     public event EnemyDeathHandler OnEnemyDeath;
 
     public float speed = 2f;
+    public float xpDrop = 25f;
     public float stopDistance = 5f;
     public Transform enemyShootPoint;
     public GameObject projectilePrefab;
@@ -150,6 +151,11 @@ public class EnemyHelicopter : MonoBehaviour
 
     void Die()
     {
+        PlayerXP playerXP = Object.FindAnyObjectByType<PlayerXP>();
+        if (playerXP != null)
+        {
+            playerXP.GainXP(25);
+        }
         Debug.Log($"{gameObject.name} died.");
         OnEnemyDeath?.Invoke();
         Destroy(gameObject);
