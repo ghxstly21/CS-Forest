@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class CharacterSelector : MonoBehaviour
 {
-    public GameObject playerPrefab;
     public Sprite samSprite;
     public Sprite ryanSprite;
     public Sprite miguelSprite;

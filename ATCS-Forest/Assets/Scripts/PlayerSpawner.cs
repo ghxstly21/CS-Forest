@@ -8,7 +8,7 @@ public class PlayerSpawner : MonoBehaviour
     private static float yPosition = -3.3f;
     private Vector3 spawnPosition = new Vector3(xPosition, yPosition, 1);
 
-    void Start()
+    public void Start()
     {
         if (playerPrefab is null)
         {
