@@ -5,8 +5,6 @@ public class EnemyHelicopter : MonoBehaviour
     public delegate void EnemyDeathHandler();
     public event EnemyDeathHandler OnEnemyDeath;
 
-
-
     public float speed = 2f;
     public float stopDistance = 5f;
     public Transform enemyShootPoint;
@@ -19,11 +17,15 @@ public class EnemyHelicopter : MonoBehaviour
     private float shootTimer;
     private int health;
 
+    private Vector2 noiseOffset;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         animator = GetComponent<Animator>();
         health = maxHealth;
+
+        noiseOffset = new Vector2(Random.Range(0f, 100f), Random.Range(0f, 100f));
 
         if (enemyShootPoint == null)
         {
@@ -69,11 +71,14 @@ public class EnemyHelicopter : MonoBehaviour
 
     void Patrol()
     {
-        float patrolHeight = 2f;
-        float patrolSpeed = 2f;
-        Vector3 pos = transform.position;
-        pos.y += Mathf.Sin(Time.time * patrolSpeed) * Time.deltaTime * patrolHeight;
-        transform.position = pos;
+        float driftSpeed = 0.5f;
+        float driftMagnitude = 1.5f;
+
+        float x = Mathf.PerlinNoise(Time.time * driftSpeed + noiseOffset.x, 0f) - 0.5f;
+        float y = Mathf.PerlinNoise(0f, Time.time * driftSpeed + noiseOffset.y) - 0.5f;
+
+        Vector3 offset = new Vector3(x, y, 0f) * driftMagnitude;
+        transform.position += offset * Time.deltaTime;
     }
 
     void Shoot()
@@ -121,8 +126,5 @@ public class EnemyHelicopter : MonoBehaviour
         Debug.Log("Enemy died.");
         OnEnemyDeath?.Invoke();
         Destroy(gameObject);
-
-
-
     }
 }
