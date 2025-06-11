@@ -17,9 +17,9 @@ TagManager:
   - Enemy
   - EnemyPorjectile
   - PlayerProjectile
-  - 
-  - 
-  - 
+  - Ground
+  - Player
+  - PlayerTrigger
   - 
   - 
   - 

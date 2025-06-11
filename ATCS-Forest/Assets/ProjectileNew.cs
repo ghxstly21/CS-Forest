@@ -4,7 +4,7 @@ public class ProjectileNew : MonoBehaviour
 {
     public int damage = 1;
     public float lifeTime = 5f;
-    public bool isEnemyBullet = false;  
+    public bool isEnemyBullet = false;
 
     private bool hasHit = false;
 
@@ -30,7 +30,7 @@ public class ProjectileNew : MonoBehaviour
         }
         else if (isEnemyBullet && collision.CompareTag("Player"))
         {
-            PlayerHealth player = collision.GetComponent<PlayerHealth>();
+            PlayerHealth player = collision.GetComponentInParent<PlayerHealth>();
             if (player != null)
             {
                 player.TakeDamage(damage);
