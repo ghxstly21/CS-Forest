@@ -14,36 +14,52 @@ public class ProjectileNew : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (hasHit) return;
+{
+    if (hasHit) return;
 
-        if (!isEnemyBullet && collision.CompareTag("Enemy"))
+    if (!isEnemyBullet)
+    {
+        // Check for Boss first
+        BossHelicopter boss = collision.GetComponent<BossHelicopter>();
+        if (boss != null)
         {
-            EnemyHelicopter enemy = collision.GetComponent<EnemyHelicopter>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
-            Debug.Log($"Player's bullet hit enemy and dealt {damage} damage.");
+            boss.TakeDamage(damage);
+            Debug.Log("💥 Hit BOSS for " + damage + " damage.");
             hasHit = true;
             Destroy(gameObject);
+            return;
         }
-        else if (isEnemyBullet && collision.CompareTag("Player"))
+
+        // Then check for regular enemies
+        EnemyHelicopter enemy = collision.GetComponent<EnemyHelicopter>();
+        if (enemy != null)
         {
-            PlayerHealth player = collision.GetComponentInParent<PlayerHealth>();
-            if (player != null)
-            {
-                player.TakeDamage(damage);
-            }
-            Debug.Log($"Enemy's bullet hit player and dealt {damage} damage.");
+            enemy.TakeDamage(damage);
+            Debug.Log("💥 Hit ENEMY for " + damage + " damage.");
             hasHit = true;
             Destroy(gameObject);
-        }
-        else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Player"))
-        {
-            Debug.Log($"Projectile hit {collision.name} and destroyed.");
-            hasHit = true;
-            Destroy(gameObject);
+            return;
         }
     }
+    else if (isEnemyBullet && collision.CompareTag("Player"))
+    {
+        PlayerHealth player = collision.GetComponentInParent<PlayerHealth>();
+        if (player != null)
+        {
+            player.TakeDamage(damage);
+        }
+        hasHit = true;
+        Destroy(gameObject);
+    }
+
+    // Hit something else (e.g. wall)
+    if (!hasHit)
+    {
+        Debug.Log("🧱 Projectile hit " + collision.name + " and was destroyed.");
+        hasHit = true;
+        Destroy(gameObject);
+    }
+}
+
+
 }

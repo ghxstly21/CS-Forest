@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class BossHelicopter : MonoBehaviour
 {
+    public static int cloneCounter = 0;
+    public static int maxClones = 9; // Dies on the 10th hit
+
     public delegate void EnemyDeathHandler();
     public event EnemyDeathHandler OnEnemyDeath;
 
     [Header("Boss Settings")]
     public float stopDistance = 7f;
-    public int maxHealth = 10;
+    public int maxHealth = 1; // Keep this 1 since we're faking multiple hits
 
     [Header("References")]
-    public Transform enemyShootPoint;  // Assign in Inspector or auto-find
+    public Transform enemyShootPoint;
     public GameObject projectilePrefab;
     public GameObject[] miniHelicopterPrefabs;
 
@@ -24,10 +27,11 @@ public class BossHelicopter : MonoBehaviour
     private float spawnTimer;
     private int currentHealth;
     private Vector2 noiseOffset;
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
 
@@ -39,19 +43,33 @@ public class BossHelicopter : MonoBehaviour
         {
             enemyShootPoint = transform.Find("EnemyShootPoint");
             if (enemyShootPoint == null)
-                Debug.LogError("EnemyShootPoint not assigned and not found as child!");
+                Debug.LogError("❌ EnemyShootPoint not assigned and not found as child!");
         }
     }
 
     void Update()
     {
-        if (player == null || enemyShootPoint == null) return;
+        // Dynamically find player if not found yet
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+                Debug.Log("✅ Boss found the player.");
+            }
+            else
+            {
+                return; // Wait until player is found
+            }
+        }
+
+        if (enemyShootPoint == null) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
-
         Patrol();
 
-        // Shoot if player close enough and cooldown elapsed
+        // Shoot if player is within range
         if (distance <= stopDistance)
         {
             shootTimer -= Time.deltaTime;
@@ -72,10 +90,6 @@ public class BossHelicopter : MonoBehaviour
 
         // Flip to face player
         transform.localScale = new Vector3(player.position.x < transform.position.x ? -3 : 3, 3, 3);
-
-        // Optional animator control - comment out if you don't use animations
-        // if (animator != null)
-        //     animator.SetBool("isShooting", distance <= stopDistance);
     }
 
     void Patrol()
@@ -106,33 +120,33 @@ public class BossHelicopter : MonoBehaviour
         if (proj != null)
             proj.isEnemyBullet = true;
 
-        Debug.Log("Boss shoots projectile at: " + Time.time);
+        Debug.Log("🚀 Boss shoots projectile.");
     }
 
     void SpawnMiniHelicopter()
-{
-    if (miniHelicopterPrefabs == null || miniHelicopterPrefabs.Length == 0) return;
+    {
+        if (miniHelicopterPrefabs == null || miniHelicopterPrefabs.Length == 0) return;
 
-    int prefabIndex = Random.Range(0, miniHelicopterPrefabs.Length);
-    GameObject selectedPrefab = miniHelicopterPrefabs[prefabIndex];
+        Debug.Log("🚁 Attempting to spawn mini helicopter...");
 
-    float offsetDistance = 2.5f;
-    float facingDirection = transform.localScale.x > 0 ? 1 : -1;
+        int prefabIndex = Random.Range(0, miniHelicopterPrefabs.Length);
+        GameObject selectedPrefab = miniHelicopterPrefabs[prefabIndex];
 
-    Vector3 spawnOffset = new Vector3(facingDirection * offsetDistance, 1f, 0f); // in front and slightly above
-    Vector3 spawnPos = transform.position + spawnOffset;
+        float offsetDistance = 2.5f;
+        float facingDirection = transform.localScale.x > 0 ? 1 : -1;
 
-    GameObject mini = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
+        Vector3 spawnOffset = new Vector3(facingDirection * offsetDistance, 1f, 0f);
+        Vector3 spawnPos = transform.position + spawnOffset;
 
-    // Give it a script that orbits around the boss
-    OrbitAroundBoss orbit = mini.AddComponent<OrbitAroundBoss>();
-    orbit.center = this.transform;
-    orbit.radius = offsetDistance;
-    orbit.speed = 1f;
+        GameObject mini = Instantiate(selectedPrefab, spawnPos, Quaternion.identity);
 
-    Debug.Log("🚁 Spawned mini helicopter flying around boss.");
-}
+        OrbitAroundBoss orbit = mini.AddComponent<OrbitAroundBoss>();
+        orbit.center = this.transform;
+        orbit.radius = offsetDistance;
+        orbit.speed = 1f;
 
+        Debug.Log("✅ Mini helicopter spawned and orbiting.");
+    }
 
     public void TakeDamage(int damage)
     {
@@ -141,14 +155,20 @@ public class BossHelicopter : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            if (cloneCounter < maxClones)
+            {
+                // Clone before destroying to fake survival
+                Instantiate(gameObject, transform.position, transform.rotation);
+                cloneCounter++;
+                Debug.Log($"👻 Clone {cloneCounter} spawned. Boss not dead yet.");
+            }
+            else
+            {
+                Debug.Log("💥 Boss actually destroyed!");
+                OnEnemyDeath?.Invoke();
+            }
+
+            Destroy(gameObject);
         }
     }
-
-    void Die()
-    {
-        Debug.Log("Boss helicopter destroyed!");
-        OnEnemyDeath?.Invoke();
-        Destroy(gameObject);
-    }
-} 
+}
