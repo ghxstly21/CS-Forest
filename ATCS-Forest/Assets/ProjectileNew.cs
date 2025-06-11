@@ -3,25 +3,60 @@ using UnityEngine;
 public class ProjectileNew : MonoBehaviour
 {
     public bool isEnemyBullet = false;
+    public int damage = 1;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private bool hasHit = false;
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isEnemyBullet && other.CompareTag("Enemy"))
+        if (hasHit) return;
+
+        if (!isEnemyBullet)
         {
-            EnemyHelicopter enemy = other.GetComponent<EnemyHelicopter>();
+            // First check for Boss
+            BossHelicopter boss = collision.GetComponent<BossHelicopter>();
+            if (boss != null)
+            {
+                boss.TakeDamage(damage);
+                Debug.Log("💥 Hit BOSS for " + damage + " damage.");
+                hasHit = true;
+                Destroy(gameObject);
+                return;
+            }
+
+            // Then check for regular enemy
+            EnemyHelicopter enemy = collision.GetComponent<EnemyHelicopter>();
             if (enemy != null)
             {
-                enemy.TakeDamage(1);
-                Destroy(gameObject);  // Destroy projectile on hit so it doesn't hit multiple times
+                enemy.TakeDamage(damage);
+                Debug.Log("💥 Hit ENEMY for " + damage + " damage.");
+                hasHit = true;
+                Destroy(gameObject);
+                return;
             }
         }
-        else if (isEnemyBullet && other.CompareTag("Player"))
+        else if (isEnemyBullet && collision.CompareTag("Player"))
         {
-            // Handle damage to player here if you want
+            PlayerHealth player = collision.GetComponentInParent<PlayerHealth>();
+            if (player != null)
+            {
+                player.TakeDamage(damage);
+                Debug.Log("💥 Hit PLAYER for " + damage + " damage.");
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ PlayerHealth not found on Player!");
+            }
+
+            hasHit = true;
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Ground"))
+
+        // If it hits something else like a wall
+        if (!hasHit)
         {
+            Debug.Log("🧱 Projectile hit " + collision.name + " and was destroyed.");
+            hasHit = true;
             Destroy(gameObject);
         }
     }
