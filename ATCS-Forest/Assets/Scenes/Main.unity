@@ -3211,6 +3211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794985556}
   - component: {fileID: 1794985555}
+  - component: {fileID: 1794985557}
   m_Layer: 0
   m_Name: StoryManager
   m_TagString: Untagged
@@ -3225,7 +3226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794985554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8a280bc019303a4e9afe0361fb1ea72, type: 3}
   m_Name: 
@@ -3235,6 +3236,7 @@ MonoBehaviour:
   continueButton: {fileID: 341817780}
   player: {fileID: 1362529866}
   healthbackground: {fileID: 1109011828}
+  storyText: {fileID: 0}
 --- !u!4 &1794985556
 Transform:
   m_ObjectHideFlags: 0
@@ -3250,6 +3252,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794985557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794985554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef1193ef52075854896249aba901211b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playeryes: {fileID: 1362529858}
+  storyPanel: {fileID: 1310442425}
+  continueButton: {fileID: 341817780}
+  player: {fileID: 1362529866}
+  healthbackground: {fileID: 1109011828}
+  storyText: {fileID: 1191995476}
 --- !u!1 &1968866135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,6 +3590,14 @@ PrefabInstance:
     - target: {fileID: 6562738370463113059, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
       propertyPath: m_Name
       value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915922435783235802, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_Size.x
+      value: 0.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915922435783235802, guid: f29c8019eb97f884db9bb7da75629e98, type: 3}
+      propertyPath: m_Size.y
+      value: 0.19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

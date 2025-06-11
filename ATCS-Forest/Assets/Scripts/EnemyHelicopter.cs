@@ -19,6 +19,11 @@ public class EnemyHelicopter : MonoBehaviour
 
     private Vector2 noiseOffset;
 
+    // Invincibility
+    private bool isInvincible = false;
+    private float invincibilityDuration = 1f;  // 1 second invincibility
+    private float invincibilityTimer = 0f;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -41,6 +46,17 @@ public class EnemyHelicopter : MonoBehaviour
 
     void Update()
     {
+        // Handle invincibility timer countdown
+        if (isInvincible)
+        {
+            invincibilityTimer -= Time.deltaTime;
+            if (invincibilityTimer <= 0f)
+            {
+                isInvincible = false;
+                // Optional: reset visual cue here (e.g. color)
+            }
+        }
+
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         if (player == null || enemyShootPoint == null)
@@ -64,9 +80,6 @@ public class EnemyHelicopter : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         else
             transform.localScale = new Vector3(1, 1, 1);
-
-        if (animator != null)
-            animator.SetBool("isShooting", distance <= stopDistance);
     }
 
     void Patrol()
@@ -112,18 +125,32 @@ public class EnemyHelicopter : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isInvincible)
+        {
+            Debug.Log($"{gameObject.name} is currently invincible. Ignoring damage.");
+            return;
+        }
+
         health -= damage;
-        Debug.Log($"Enemy took {damage} damage, health now {health}");
+        Debug.LogWarning($"{gameObject.name} took {damage} damage. Current health: {health}");
 
         if (health <= 0)
         {
+            Debug.Log($"{gameObject.name} health is 0 or less. Dying now.");
             Die();
+            return;
         }
+
+        // Start invincibility
+        isInvincible = true;
+        invincibilityTimer = invincibilityDuration;
+
+        // Optional: add visual feedback here for invincibility (e.g. flash color)
     }
 
     void Die()
     {
-        Debug.Log("Enemy died.");
+        Debug.Log($"{gameObject.name} died.");
         OnEnemyDeath?.Invoke();
         Destroy(gameObject);
     }
