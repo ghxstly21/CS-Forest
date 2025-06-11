@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class button : MonoBehaviour
+public class StartButton : MonoBehaviour
 {
-    public void go()
+    public void Start()
     {
         SceneManager.LoadScene(1);
     }

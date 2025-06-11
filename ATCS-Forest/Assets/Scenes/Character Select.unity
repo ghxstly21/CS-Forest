@@ -206,6 +206,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &246321423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 246321425}
+  - component: {fileID: 246321424}
+  m_Layer: 0
+  m_Name: SelectionController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &246321424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246321423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84e2c67ea5746d78df0e3bc4788cef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 2198113418895804327, guid: 419c1429d6c2f47518799292f308246a, type: 3}
+  samSprite: {fileID: 3763752930381237044, guid: 65f277163903be64a9e5adf42c977dab, type: 3}
+  ryanSprite: {fileID: -3519605799669109593, guid: 36ca3c0a605faae41a576225c21fb75a, type: 3}
+  miguelSprite: {fileID: 2044687700991373437, guid: 839a6022d3f38934e8b0fb76e351852e, type: 3}
+--- !u!4 &246321425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246321423}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 365.23004, y: 144.77629, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &290387051
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +833,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 759695165}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 246321424}
+        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Ryan
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &759695165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +1031,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 996074965}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 246321424}
+        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Miguel
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &996074965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,7 +1746,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1770722429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 246321423}
+        m_TargetAssemblyTypeName: CharacterSelector, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Sam
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1770722429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,3 +1808,4 @@ SceneRoots:
   - {fileID: 719245281}
   - {fileID: 1176269699}
   - {fileID: 753922848}
+  - {fileID: 246321425}
