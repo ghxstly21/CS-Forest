@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class StoryManager : MonoBehaviour
+public class StoryManagerLevel1 : MonoBehaviour
 {
     public GameObject playeryes;
     public GameObject storyPanel;
@@ -12,16 +12,24 @@ public class StoryManager : MonoBehaviour
     public TMP_Text storyText; // Use this for your story display
 
     private string[] storyLines = {
-    "Congratulations on defeating the smart drones!",
-    "Those drones were tough to beat, but you pulled through.",
-    "However... there's more you should know.",
-    "Those drones were created by the ATCS kids—deep in the forest.",
-    "And now, they're mad. Really mad.",
-    "These kids usually hate the wilderness...",
-    "But their rage has driven them out of their labs to hunt you down.",
-    "Brace yourself. This is only the beginning.",
-    "Good luck."
+    "Welcome to ATCS: Forest Trials!",
+    "This is a 2D platformer-RPG hybrid where you play as an ATCS student of your choice.",
+    "You must journey through a mysterious forest filled with challenges and secrets.",
+    "But beware... not all ATCS students are on your side.",
+    "Some have gone rogue — acting as bosses who block your path!",
+    "Whenever you confront one, the world pauses and an RPG battle begins.",
+    "You'll need strategy, timing, and courage to defeat them and move forward.",
+    "Oh — and rumor has it, Mr. Sen is guarding something deep within the forest...",
+    
+    // First Level Introduction
+    "Your journey begins at the edge of the forest.",
+    "It seems quiet — too quiet...",
+    "Suddenly, a swarm of smart drones appears!",
+    "They're fast, adaptive, and programmed for one thing: stopping you.",
+    "These drones are no accident — they were built by ATCS students.",
+    "This is just the first test. Show them what you've got!"
 };
+
 
 
     private int currentLineIndex = 0;

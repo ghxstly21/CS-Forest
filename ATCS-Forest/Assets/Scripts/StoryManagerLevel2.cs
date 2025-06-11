@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class StoryManager : MonoBehaviour
+public class StoryManagerLevel2 : MonoBehaviour
 {
     public GameObject playeryes;
     public GameObject storyPanel;
