@@ -1,42 +1,51 @@
 using UnityEngine;
 
-public class BigTommyRollingMovement : MonoBehaviour
+public class BigTommyRunBackAndForth : MonoBehaviour
 {
-    public Transform pointA;
-    public Transform pointB;
-    public float moveSpeed = 3f;
-    public float torqueAmount = 20f;
-    public float stopDistance = 0.1f;
+    public float speed = 5f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float checkDistance = 1f;
 
     private Rigidbody2D rb;
-    private Vector2 currentTarget;
+    private bool movingRight = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (pointA != null && pointB != null)
-            currentTarget = pointB.position;
     }
 
     void FixedUpdate()
     {
-        if (pointA == null || pointB == null) return;
+        rb.linearVelocity = new Vector2((movingRight ? 1 : -1) * speed, rb.linearVelocity.y);
 
-        Vector2 direction = ((Vector2)currentTarget - rb.position).normalized;
-        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
-
-        // Apply torque to simulate rolling
-        float torqueDir = -Mathf.Sign(direction.x); // Flip direction depending on target
-        rb.AddTorque(torqueDir * torqueAmount);
-
-        // Flip direction if close to target
-        if (Vector2.Distance(rb.position, currentTarget) < stopDistance)
+        // Flip if no ground ahead or hit wall
+        if (!IsGroundAhead() || HitWall())
         {
-            currentTarget = (currentTarget == (Vector2)pointA.position) ? pointB.position : pointA.position;
+            Flip();
         }
+    }
 
-        // Flip visual scale for sprite if needed (optional)
-        transform.localScale = new Vector3(direction.x < 0 ? -1 : 1, 1, 1);
+    bool IsGroundAhead()
+    {
+        Vector2 direction = movingRight ? Vector2.right : Vector2.left;
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, direction, checkDistance, groundLayer);
+        return hit.collider != null;
+    }
+
+    bool HitWall()
+    {
+        Vector2 forward = movingRight ? Vector2.right : Vector2.left;
+        RaycastHit2D wallHit = Physics2D.Raycast(transform.position, forward, 0.5f, groundLayer);
+        return wallHit.collider != null;
+    }
+
+    void Flip()
+    {
+        movingRight = !movingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -46,8 +55,8 @@ public class BigTommyRollingMovement : MonoBehaviour
             PlayerHealth player = collision.collider.GetComponentInParent<PlayerHealth>();
             if (player != null)
             {
-                player.TakeDamage(1); // You can change this value as needed
-                Debug.Log("Big Tommy hit the player!");
+                player.TakeDamage(1);
+                Debug.Log("Big Tommy collided with the player!");
             }
         }
     }
