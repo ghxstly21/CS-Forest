@@ -1,62 +1,61 @@
 using UnityEngine;
 
-public class BigTommyRunBackAndForth : MonoBehaviour
+public class BigTommyMovement : MonoBehaviour
 {
-    public float speed = 5f;
-    public Transform groundCheck;
-    public LayerMask groundLayer;
-    public float checkDistance = 1f;
+    public float speed = 8f;
+    public float leftLimit = -10f;
+    public float rightLimit = 10f;
+    public int damage = 1;
+    public float damageCooldown = 1f;
 
-    private Rigidbody2D rb;
+    public float groundY = 0f;  // Set this to your floor height
+
     private bool movingRight = true;
+    private float lastDamageTime = -999f;
 
-    void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        // Move Big Tommy
+        float moveDirection = movingRight ? 1f : -1f;
+        transform.Translate(moveDirection * speed * Time.deltaTime, 0, 0);
 
-    void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2((movingRight ? 1 : -1) * speed, rb.linearVelocity.y);
+        // Clamp vertical position to groundY
+        Vector3 pos = transform.position;
+        pos.y = groundY;
+        transform.position = pos;
 
-        // Flip if no ground ahead or hit wall
-        if (!IsGroundAhead() || HitWall())
+        // Flip direction at limits
+        if (transform.position.x >= rightLimit)
         {
-            Flip();
+            movingRight = false;
+            FlipSprite();
+        }
+        else if (transform.position.x <= leftLimit)
+        {
+            movingRight = true;
+            FlipSprite();
         }
     }
 
-    bool IsGroundAhead()
+    private void FlipSprite()
     {
-        Vector2 direction = movingRight ? Vector2.right : Vector2.left;
-        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, direction, checkDistance, groundLayer);
-        return hit.collider != null;
-    }
-
-    bool HitWall()
-    {
-        Vector2 forward = movingRight ? Vector2.right : Vector2.left;
-        RaycastHit2D wallHit = Physics2D.Raycast(transform.position, forward, 0.5f, groundLayer);
-        return wallHit.collider != null;
-    }
-
-    void Flip()
-    {
-        movingRight = !movingRight;
         Vector3 scale = transform.localScale;
-        scale.x *= -1;
+        scale.x = movingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            PlayerHealth player = collision.collider.GetComponentInParent<PlayerHealth>();
-            if (player != null)
+            if (Time.time - lastDamageTime >= damageCooldown)
             {
-                player.TakeDamage(1);
-                Debug.Log("Big Tommy collided with the player!");
+                var playerHealth = collision.gameObject.GetComponentInParent<PlayerHealth>();
+                if (playerHealth != null)
+                {
+                    playerHealth.TakeDamage(damage);
+                    lastDamageTime = Time.time;
+                }
             }
         }
     }

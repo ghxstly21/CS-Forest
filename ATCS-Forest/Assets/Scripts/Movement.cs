@@ -9,6 +9,8 @@ public class PlayerMovement2D : MonoBehaviour
     public float minJumpHeight = 0.9f;
     public float maxJumpHeight = 3f;
     public GameObject player;
+    public float groundY = 0f;  // Set to your ground's Y position
+
 
     private Rigidbody2D rb;
     private PlayerControls controls;
@@ -64,6 +66,9 @@ public class PlayerMovement2D : MonoBehaviour
         // Update animator parameter
         if (animator != null)
             animator.SetBool("isWalking", isWalking);
+        Vector3 pos = transform.position;
+        pos.y = groundY; // same groundY as Big Tommy or your floor height
+        transform.position = pos;
     }
 
     void OnJump(InputAction.CallbackContext ctx)

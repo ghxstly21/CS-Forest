@@ -2696,11 +2696,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  leftLimit: -10
-  rightLimit: 10
-  damage: 1
-  damageCooldown: 1
-  groundY: -3.5
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  checkDistance: 1
 --- !u!4 &1221486558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1998695072527019860, guid: a6e9816a2a958c949ba74b69897b877d, type: 3}
@@ -4424,10 +4424,6 @@ PrefabInstance:
       propertyPath: playerMovementScriptObject
       value: 
       objectReference: {fileID: 1362529858}
-    - target: {fileID: 4969362923826550562, guid: 419c1429d6c2f47518799292f308246a, type: 3}
-      propertyPath: groundY
-      value: -3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5611895259025229514, guid: 419c1429d6c2f47518799292f308246a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.5
@@ -4470,10 +4466,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6543379910246554016, guid: 419c1429d6c2f47518799292f308246a, type: 3}
       propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9008389181232742985, guid: 419c1429d6c2f47518799292f308246a, type: 3}
-      propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
