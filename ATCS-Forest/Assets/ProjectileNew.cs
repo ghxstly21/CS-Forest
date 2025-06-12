@@ -23,6 +23,16 @@ public class ProjectileNew : MonoBehaviour
                 enemy.TakeDamage(damage);
                 Debug.Log("💥 Hit ENEMY for " + damage + " damage.");
             }
+            else if (collision.TryGetComponent(out MiguelEnemySimple miguel))
+            {
+                miguel.TakeDamage((int)damage);  // Cast to int if Miguel uses int HP
+                Debug.Log("🎵 Hit MIGUEL for " + damage + " damage.");
+            }
+            else if (collision.TryGetComponent(out AishaEnemy aisha))
+            {
+                aisha.TakeDamage((int)damage); // or use float if needed
+            }
+
 
             hasHit = true;
             Destroy(gameObject);
