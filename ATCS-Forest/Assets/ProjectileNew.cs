@@ -25,14 +25,19 @@ public class ProjectileNew : MonoBehaviour
             }
             else if (collision.TryGetComponent(out MiguelEnemySimple miguel))
             {
-                miguel.TakeDamage((int)damage);  // Cast to int if Miguel uses int HP
+                miguel.TakeDamage((int)damage);
                 Debug.Log("🎵 Hit MIGUEL for " + damage + " damage.");
             }
             else if (collision.TryGetComponent(out AishaEnemy aisha))
             {
-                aisha.TakeDamage((int)damage); // or use float if needed
+                aisha.TakeDamage((int)damage);
+                Debug.Log("🪱 Hit AISHA for " + damage + " damage.");
             }
-
+            else if (collision.TryGetComponent(out BigTommyMovement bigTommy))
+            {
+                bigTommy.TakeDamage(damage);
+                Debug.Log("💪 Hit BIG TOMMY for " + damage + " damage.");
+            }
 
             hasHit = true;
             Destroy(gameObject);

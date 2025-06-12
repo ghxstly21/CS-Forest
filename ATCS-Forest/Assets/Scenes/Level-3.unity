@@ -2698,9 +2698,10 @@ MonoBehaviour:
   speed: 5
   leftLimit: -10
   rightLimit: 10
+  groundY: -3.5
   damage: 1
   damageCooldown: 1
-  groundY: -3.5
+  maxHealth: 10
 --- !u!4 &1221486558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1998695072527019860, guid: a6e9816a2a958c949ba74b69897b877d, type: 3}

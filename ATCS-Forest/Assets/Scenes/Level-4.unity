@@ -3834,12 +3834,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526963f68b83ffe4d895c17755802fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playeryes: {fileID: 0}
-  storyPanel: {fileID: 0}
-  continueButton: {fileID: 0}
-  player: {fileID: 0}
-  healthbackground: {fileID: 0}
-  storyText: {fileID: 0}
+  playeryes: {fileID: 1362529858}
+  storyPanel: {fileID: 1310442425}
+  continueButton: {fileID: 341817780}
+  player: {fileID: 8111857030540932435}
+  healthbackground: {fileID: 1109011828}
+  storyText: {fileID: 1191995476}
 --- !u!1 &1876170443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,6 +4372,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1362529877}
   m_SourcePrefab: {fileID: 100100000, guid: 419c1429d6c2f47518799292f308246a, type: 3}
+--- !u!114 &8111857030540932435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4969362923826550562, guid: 419c1429d6c2f47518799292f308246a, type: 3}
+  m_PrefabInstance: {fileID: 8111857030540932434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362529858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d978f265930db7d4fa205efe3ccbb586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
