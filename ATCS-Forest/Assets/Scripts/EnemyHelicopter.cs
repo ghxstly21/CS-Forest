@@ -11,12 +11,12 @@ public class EnemyHelicopter : MonoBehaviour
     public Transform enemyShootPoint;
     public GameObject projectilePrefab;
     public float shootCooldown = 1.5f;
-    public int maxHealth = 3;
+    public float maxHealth = 3;
 
     private Transform player;
     private Animator animator;
     private float shootTimer;
-    private int health;
+    private float health;
 
     private Vector2 noiseOffset;
 
@@ -124,7 +124,7 @@ public class EnemyHelicopter : MonoBehaviour
         Debug.Log("Enemy shooting projectile at time: " + Time.time);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (isInvincible)
         {

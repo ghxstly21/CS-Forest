@@ -2,40 +2,29 @@ using UnityEngine;
 
 public class MusicalNoteProjectile : MonoBehaviour
 {
-    public float speed = 8f;
-    public int damage = 1;
-    public Rigidbody2D rb;
-    public SpriteRenderer spriteRenderer;
-
-    // Assign this from EnemyShoot script based on note type
-    public Sprite noteSprite;
+    public float damage = 0.5f;   // small decimal damage
+    public float lifetime = 3f;   // destroy after 3 seconds
 
     void Start()
     {
-        if (rb == null) rb = GetComponent<Rigidbody2D>();
-        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (noteSprite != null)
-            spriteRenderer.sprite = noteSprite;
-
-        rb.linearVelocity = transform.right * speed;
+        Destroy(gameObject, lifetime);  // auto destroy after some time
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            // Assuming player has a PlayerHealth script
-            var playerHealth = other.GetComponent<PlayerHealth>();
+            // Try to get player's health component
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
             }
-            Destroy(gameObject);
+            Destroy(gameObject);  // Destroy projectile after hitting player
         }
-        else if (other.CompareTag("Ground") || other.CompareTag("Obstacle"))
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Destroy(gameObject);
+            Destroy(gameObject);  // Destroy if hits ground or walls
         }
     }
 }

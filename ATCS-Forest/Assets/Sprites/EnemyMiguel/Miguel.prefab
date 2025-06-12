@@ -44,8 +44,7 @@ GameObject:
   - component: {fileID: 5227082524623123670}
   - component: {fileID: 4530279016991990742}
   - component: {fileID: 8050195465639880122}
-  - component: {fileID: 377374467956186998}
-  - component: {fileID: 7643608168680420588}
+  - component: {fileID: 3457877551660832543}
   m_Layer: 6
   m_Name: Miguel
   m_TagString: Enemy
@@ -63,7 +62,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.5, y: -3.3, z: 1}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4018907584581524007}
@@ -219,7 +218,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3, y: 0.65}
   m_EdgeRadius: 0
---- !u!114 &377374467956186998
+--- !u!114 &3457877551660832543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,38 +227,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2593516125598872190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a05e1859317a01746a81e904de8c7aa5, type: 3}
+  m_Script: {fileID: 11500000, guid: 657b97acb17dfce4191eb4577b41f043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 2
-  patrolDistance: 4
-  bobAmplitude: 0.5
-  bobFrequency: 2
---- !u!114 &7643608168680420588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2593516125598872190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309d8d89f1f9e5143b595ad7d7a27618, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6576457445674927274, guid: c6a6ace374ba72f40bb6390e8c02c229, type: 3}
-  shootPoint: {fileID: 1998695072527019860}
-  shootCooldown: 1
-  noteSprites:
-  - {fileID: 8359124691965470686, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -7523397521647640928, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -2593337273027843970, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -7437913904056983708, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -9171600730494495211, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -6106065623347098562, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: 8951329268650364339, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -959206601398832217, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: 3053368277870131887, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: 5275789677508925063, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: -8810223257582587506, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
-  - {fileID: 1726798837629786039, guid: d9dc9b69c2aad1446897926d3d48ee6d, type: 3}
+  patrolSpeed: 1.5
+  patrolRange: 3
+  enemyShootPoint: {fileID: 0}
+  projectilePrefab: {fileID: 2494781381158503396, guid: aba73a1c0b7403947be987eeeb708890, type: 3}
+  shootCooldown: 0.8

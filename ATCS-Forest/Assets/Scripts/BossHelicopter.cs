@@ -7,7 +7,7 @@ public class BossHelicopter : MonoBehaviour
 
     [Header("Boss Settings")]
     public float stopDistance = 7f;
-    public int maxHealth = 20; // Real max health now
+    public float maxHealth = 20; // Real max health now
     public int xpReward = 100; // Amount of XP to give on death
 
     [Header("References")]
@@ -23,10 +23,10 @@ public class BossHelicopter : MonoBehaviour
     private Animator animator;
     private float shootTimer;
     private float spawnTimer;
-    private int currentHealth;
+    private float currentHealth;
     private Vector2 noiseOffset;
-    public int CurrentHealth => currentHealth;
-    public int MaxHealth => maxHealth;
+    public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
 
     void Start()
     {
@@ -140,7 +140,7 @@ public class BossHelicopter : MonoBehaviour
         Debug.Log("✅ Mini helicopter spawned and orbiting.");
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         Debug.Log($"Boss took {damage} damage, health now {currentHealth}");

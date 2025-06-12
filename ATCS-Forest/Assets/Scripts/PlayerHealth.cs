@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
-    public int currentHealth;
+    public float maxHealth = 3;
+    public float currentHealth;
 
     public GameObject gameOverPanel;
     public GameObject playerMovementScriptObject;
@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
         gameOverPanel.SetActive(false);
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         currentHealth -= amount;
         Debug.Log("Player took damage. Current HP: " + currentHealth);

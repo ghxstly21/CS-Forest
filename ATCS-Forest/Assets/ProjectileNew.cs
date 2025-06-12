@@ -3,7 +3,7 @@ using UnityEngine;
 public class ProjectileNew : MonoBehaviour
 {
     public bool isEnemyBullet = false;
-    public int damage = 1;
+    public float damage = 1;
 
     private bool hasHit = false;
 
