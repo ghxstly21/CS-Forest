@@ -18,7 +18,7 @@ public class StoryManagerLevel4 : MonoBehaviour
     public GameObject image1;
     public GameObject image2;
     public GameObject image3;
-
+    public GameObject image4;
     private string[] storyLines = {
         "You beat the entire forest.",
         "You not only shot down the smart drones but also defeated the inventors (f students)",
@@ -39,6 +39,7 @@ public class StoryManagerLevel4 : MonoBehaviour
         image1.SetActive(false);
         image2.SetActive(false);
         image3.SetActive(false);
+        image4.SetActive(false);
     }
 
     void Start()
@@ -68,20 +69,23 @@ public class StoryManagerLevel4 : MonoBehaviour
 
     IEnumerator FlashImagesAndCloseStory()
     {
-                storyPanel.SetActive(false);
+        storyPanel.SetActive(false);
 
         // Flash each image one by one
         image1.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         image1.SetActive(false);
 
         image2.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         image2.SetActive(false);
 
         image3.SetActive(true);
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         image3.SetActive(false);
+        image4.SetActive(true);
+        yield return new WaitForSecondsRealtime(1f);
+        image4.SetActive(false);
 
         CloseStory();
     }
