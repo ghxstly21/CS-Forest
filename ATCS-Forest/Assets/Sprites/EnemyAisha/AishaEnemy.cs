@@ -58,7 +58,7 @@ public class AishaEnemy : MonoBehaviour
         if (isInvincible) return;
 
         currentHealth -= dmg;
-        Debug.Log($"🪱 Aisha took {dmg} damage. HP: {currentHealth}");
+        Debug.Log($" Aisha took {dmg} damage. HP: {currentHealth}");
 
         if (currentHealth <= 0)
         {
@@ -70,12 +70,11 @@ public class AishaEnemy : MonoBehaviour
         isInvincible = true;
         invincibilityTimer = invincibilityDuration;
 
-        // Optional: add flash or flicker animation here
     }
 
     void Die()
     {
-        Debug.Log("🪦 Aisha died!");
+        Debug.Log(" Aisha died!");
 
         // Give XP
         PlayerXP xp = FindAnyObjectByType<PlayerXP>();

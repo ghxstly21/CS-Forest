@@ -6,7 +6,7 @@ public class BigTommyMovement : MonoBehaviour
     public float speed = 8f;
     public float leftLimit = -10f;
     public float rightLimit = 10f;
-    public float groundY = 0f;  // Set this to your floor height
+    public float groundY = 0f;  
     private bool movingRight = true;
 
     [Header("Attack")]
@@ -73,11 +73,10 @@ public class BigTommyMovement : MonoBehaviour
         }
     }
 
-    // Call this from projectile on hit
     public void TakeDamage(float amount)
     {
         currentHealth -= amount;
-        Debug.Log("💢 Big Tommy took " + amount + " damage! HP: " + currentHealth);
+        Debug.Log(" Big Tommy took " + amount + " damage! HP: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -87,7 +86,7 @@ public class BigTommyMovement : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("☠️ Big Tommy is DEAD!");
+        Debug.Log(" Big Tommy is DEAD!");
         Destroy(gameObject);
     }
 }

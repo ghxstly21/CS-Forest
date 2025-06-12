@@ -41,7 +41,7 @@ public class BossHelicopter : MonoBehaviour
         {
             enemyShootPoint = transform.Find("EnemyShootPoint");
             if (enemyShootPoint == null)
-                Debug.LogError("❌ EnemyShootPoint not assigned and not found as child!");
+                Debug.LogError("EnemyShootPoint not assigned and not found as child!");
         }
     }
 
@@ -53,7 +53,7 @@ public class BossHelicopter : MonoBehaviour
             if (playerObj != null)
             {
                 player = playerObj.transform;
-                Debug.Log("✅ Boss found the player.");
+                Debug.Log("Boss found the player.");
             }
             else
             {
@@ -114,7 +114,7 @@ public class BossHelicopter : MonoBehaviour
         if (proj != null)
             proj.isEnemyBullet = true;
 
-        Debug.Log("🚀 Boss shoots projectile.");
+        Debug.Log(" Boss shoots projectile.");
     }
 
     void SpawnMiniHelicopter()
@@ -137,7 +137,7 @@ public class BossHelicopter : MonoBehaviour
         orbit.radius = offsetDistance;
         orbit.speed = 1f;
 
-        Debug.Log("✅ Mini helicopter spawned and orbiting.");
+        Debug.Log("Mini helicopter spawned and orbiting.");
     }
 
     public void TakeDamage(float damage)
@@ -147,7 +147,7 @@ public class BossHelicopter : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("💥 Boss actually destroyed!");
+            Debug.Log(" Boss actually destroyed!");
             OnEnemyDeath?.Invoke();
 
             // Give XP to player
@@ -155,7 +155,7 @@ public class BossHelicopter : MonoBehaviour
             if (xp != null)
             {
                 xp.GainXP(xpReward);
-                Debug.Log($"🟢 Player gained {xpReward} XP for killing the boss.");
+                Debug.Log($"Player gained {xpReward} XP for killing the boss.");
             }
 
             Destroy(gameObject);

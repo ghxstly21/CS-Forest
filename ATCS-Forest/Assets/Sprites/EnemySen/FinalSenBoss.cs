@@ -71,10 +71,8 @@ public class FinalSenBoss : MonoBehaviour
     void Die()
     {
         Debug.Log("Final Sen Boss died!");
-        // TODO: Play death animation, drop loot, etc.
 
         Destroy(gameObject);
     }
 
-    // Optional: Add OnCollision or trigger methods for taking damage if needed
 }

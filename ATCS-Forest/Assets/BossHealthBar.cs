@@ -3,9 +3,8 @@ using UnityEngine.UI;
 
 public class BossHealthBar : MonoBehaviour
 {
-    public BossHelicopter boss; // Drag in the Inspector
-    public Image fillImage;     // Drag the HealthBarFill image here
-
+    public BossHelicopter boss; 
+    public Image fillImage;
     private void Update()
     {
         if (boss != null && fillImage != null)

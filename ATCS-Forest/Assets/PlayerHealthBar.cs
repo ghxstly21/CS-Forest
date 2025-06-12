@@ -29,7 +29,6 @@ public class PlayerHealthBar : MonoBehaviour
 
     void Update()
     {
-        // Move the health bar to follow the player
         Vector3 worldPos = player.position + offset;
         Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
         transform.position = screenPos;

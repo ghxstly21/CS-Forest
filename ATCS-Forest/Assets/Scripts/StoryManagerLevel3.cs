@@ -9,7 +9,7 @@ public class StoryManagerLevel3 : MonoBehaviour
     public Button continueButton;
     public PlayerMovement2D player;
     public GameObject healthbackground;
-    public TMP_Text storyText; // Use this for your story display
+    public TMP_Text storyText; 
 
     private string[] storyLines = {
     "You beat the two freaks, Miguel and Aisha.",

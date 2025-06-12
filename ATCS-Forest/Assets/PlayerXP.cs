@@ -19,9 +19,9 @@ public class PlayerXP : MonoBehaviour
 
     [Header("Level Up Panel")]
     public GameObject levelUpPanel;
-    public Button[] upgradeButtons; // assign in Inspector
-    public TMP_Text[] upgradeNames; // assign in Inspector
-    public TMP_Text[] upgradeDescriptions; // assign in Inspector
+    public Button[] upgradeButtons; 
+    public TMP_Text[] upgradeNames; 
+    public TMP_Text[] upgradeDescriptions; 
 
     private List<UpgradeOption> allUpgrades;
 

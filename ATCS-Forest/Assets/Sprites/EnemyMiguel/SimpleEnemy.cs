@@ -17,7 +17,6 @@ public class MiguelEnemySimple : MonoBehaviour
 
     private float lastPosX;
 
-    // Invincibility (optional to prevent instant kill)
     private bool isInvincible = false;
     private float invincibilityDuration = 0.3f;
     private float invincibilityTimer = 0f;
@@ -98,7 +97,6 @@ public class MiguelEnemySimple : MonoBehaviour
             bullet.transform.right = direction;
         }
 
-        // If you use a custom script for the projectile, make sure to tag it as enemy bullet
         ProjectileNew proj = bullet.GetComponent<ProjectileNew>();
         if (proj != null)
         {

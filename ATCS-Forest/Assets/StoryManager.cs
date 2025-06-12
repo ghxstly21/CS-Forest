@@ -9,7 +9,7 @@ public class StoryManager : MonoBehaviour
     public Button continueButton;
     public PlayerMovement2D player;
     public GameObject healthbackground;
-    public TMP_Text storyText; // Use this for your story display
+    public TMP_Text storyText;
 
     private string[] storyLines = {
     "Congratulations on defeating the smart drones!",

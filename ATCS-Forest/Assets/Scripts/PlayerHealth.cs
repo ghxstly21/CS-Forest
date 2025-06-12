@@ -56,11 +56,10 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene(5);
     }
 
-    // 👇 ADD THESE TWO METHODS
     public void RestoreToFull()
     {
         currentHealth = maxHealth;
-        Debug.Log("❤️ Fully healed to " + currentHealth + " HP");
+        Debug.Log("Fully healed to " + currentHealth + " HP");
     }
 
     public void IncreaseMaxHealth()
@@ -68,6 +67,6 @@ public class PlayerHealth : MonoBehaviour
         int increaseAmount = 5;
         maxHealth += increaseAmount;
         currentHealth += increaseAmount;
-        Debug.Log("💪 Max health increased to " + maxHealth + " and added " + increaseAmount + " HP.");
+        Debug.Log("Max health increased to " + maxHealth + " and added " + increaseAmount + " HP.");
     }
 }

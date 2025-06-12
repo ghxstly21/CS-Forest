@@ -47,14 +47,12 @@ public class EnemyHelicopter : MonoBehaviour
 
     void Update()
     {
-        // Handle invincibility timer countdown
         if (isInvincible)
         {
             invincibilityTimer -= Time.deltaTime;
             if (invincibilityTimer <= 0f)
             {
                 isInvincible = false;
-                // Optional: reset visual cue here (e.g. color)
             }
         }
 
@@ -146,7 +144,6 @@ public class EnemyHelicopter : MonoBehaviour
         isInvincible = true;
         invincibilityTimer = invincibilityDuration;
 
-        // Optional: add visual feedback here for invincibility (e.g. flash color)
     }
 
     void Die()
