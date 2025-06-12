@@ -39,9 +39,13 @@ public class PlayerHealth : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
-    public void Respawn()
+    public void RespawnLevel1()
     {
         SceneManager.LoadScene(2);
+    }
+    public void RespawnLevel2()
+    {
+        SceneManager.LoadScene(3);
     }
 
     // 👇 ADD THESE TWO METHODS
