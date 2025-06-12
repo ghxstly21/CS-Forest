@@ -845,7 +845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enemies Left
+  m_text: Enemies Remaining
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b046a7fbe337e455cb4b4d23735dec90, type: 2}
   m_sharedMaterial: {fileID: -8836190608053166376, guid: b046a7fbe337e455cb4b4d23735dec90, type: 2}
