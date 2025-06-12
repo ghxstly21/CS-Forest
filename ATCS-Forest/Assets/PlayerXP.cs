@@ -56,8 +56,8 @@ public class PlayerXP : MonoBehaviour
                 () => { health.RestoreToFull(); }
             ),
             new UpgradeOption(
-                "Battery Replace",
-                () => "Increase your maximum health by 1.",
+                "Battery Boost",
+                () => "Increase your maximum and current health by 5 HP.",
                 () => { health.IncreaseMaxHealth(); }
             ),
         };
