@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyChecker : MonoBehaviour
+public class EndCheck : MonoBehaviour
 {
     public float checkInterval = 1f;
     private bool gameEnded = false;

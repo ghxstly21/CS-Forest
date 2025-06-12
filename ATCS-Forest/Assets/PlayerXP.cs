@@ -11,7 +11,7 @@ public class PlayerXP : MonoBehaviour
     [Header("XP and Level")]
     public static int currentLevel = 1;
     public float currentXP = 0f;
-    public float xpToNextLevel = 100f;
+    public static float xpToNextLevel = 100f;
 
     [Header("UI Elements")]
     public Slider xpBar;
