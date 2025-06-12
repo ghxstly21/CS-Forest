@@ -3082,19 +3082,19 @@ MonoBehaviour:
   xpToNextLevel: 100
   xpBar: {fileID: 456006354}
   levelText: {fileID: 49565}
-  levelUpPanel: {fileID: 0}
+  levelUpPanel: {fileID: 1748809312}
   upgradeButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 288236069}
+  - {fileID: 1690543389}
+  - {fileID: 303575900}
   upgradeNames:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 54446796}
+  - {fileID: 475122278}
+  - {fileID: 882478693}
   upgradeDescriptions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 932370492}
+  - {fileID: 1400700048}
+  - {fileID: 1876170445}
 --- !u!1 &1400700046
 GameObject:
   m_ObjectHideFlags: 0
