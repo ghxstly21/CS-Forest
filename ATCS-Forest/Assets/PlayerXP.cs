@@ -9,9 +9,9 @@ public class PlayerXP : MonoBehaviour
     private PlayerHealth health;
 
     [Header("XP and Level")]
-    public int currentLevel = 1;
-    public int currentXP = 0;
-    public int xpToNextLevel = 100;
+    public static int currentLevel = 1;
+    public float currentXP = 0f;
+    public float xpToNextLevel = 100f;
 
     [Header("UI Elements")]
     public Slider xpBar;
@@ -36,27 +36,27 @@ public class PlayerXP : MonoBehaviour
         allUpgrades = new List<UpgradeOption>()
         {
             new UpgradeOption(
-                "Projectile Count",
-                () => $"Fire {shoot.projectileCount + 1} projectiles per shot.",  // dynamic description
+                "Projectile Prodigy",
+                () => $"Fire {PlayerShoot.projectileCount + 1} projectiles per shot.",  // dynamic description
                 () => { shoot.IncreaseProjectileCount(); }
             ),
             new UpgradeOption(
-                "Faster Shot",
+                "Sharpshooter",
                 () => "Your shots fly faster.",
                 () => { shoot.IncreaseBulletSpeed(); }
             ),
             new UpgradeOption(
-                "More Damage",
+                "Heavy Damager",
                 () => "Shots deal more damage.",
                 () => { shoot.IncreaseDamage(); }
             ),
             new UpgradeOption(
-                "Full Heal",
+                "Recharge",
                 () => "Instantly recover all health.",
                 () => { health.RestoreToFull(); }
             ),
             new UpgradeOption(
-                "Max Health+",
+                "Battery Replace",
                 () => "Increase your maximum health by 1.",
                 () => { health.IncreaseMaxHealth(); }
             ),
@@ -70,6 +70,7 @@ public class PlayerXP : MonoBehaviour
         {
             currentXP -= xpToNextLevel;
             LevelUp();
+            xpToNextLevel += (1.5f*xpToNextLevel);
         }
         UpdateUI();
     }
