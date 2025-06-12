@@ -15,7 +15,7 @@ public class BigTommyMovement : MonoBehaviour
     private float lastDamageTime = -999f;
 
     [Header("Health")]
-    public float maxHealth = 10f;
+    public float maxHealth = 100f;
     private float currentHealth;
 
     private void Start()

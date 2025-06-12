@@ -38,6 +38,12 @@ public class ProjectileNew : MonoBehaviour
                 bigTommy.TakeDamage(damage);
                 Debug.Log("💪 Hit BIG TOMMY for " + damage + " damage.");
             }
+            else if (collision.TryGetComponent(out FinalSenBoss finalSen))
+            {
+                finalSen.TakeDamage((int)damage);
+                Debug.Log("🔥 Hit FINAL SEN BOSS for " + damage + " damage.");
+            }
+
 
             hasHit = true;
             Destroy(gameObject);

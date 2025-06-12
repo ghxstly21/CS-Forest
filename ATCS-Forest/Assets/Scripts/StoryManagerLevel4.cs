@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class StoryManagerLevel4 : MonoBehaviour
@@ -9,16 +10,17 @@ public class StoryManagerLevel4 : MonoBehaviour
     public Button continueButton;
     public PlayerMovement2D player;
     public GameObject healthbackground;
-    public TMP_Text storyText; // Use this for your story display
+    public TMP_Text storyText; 
+    public GameObject music;// Use this for your story display
 
     private string[] storyLines = {
     "You beat the entire forest.",
-    "You not only shot down the smart drones but also killed the inventors (f students)",
+    "You not only shot down the smart drones but also defeated the inventors (f students)",
     "But you forgot that there is always someone supervising students",
     "Baba Sen is very mad...",
     "I hoped you like the enemies because they're coming back from the grave..",
     "As Baba Sen says, 'CommandZ'",
-    "The only way to end this all.. is to kill him",
+    "The only way to end this all.. is to defeat him",
     "Brace yourself. This is the END.",
     "Good luck."
 };
@@ -33,6 +35,7 @@ public class StoryManagerLevel4 : MonoBehaviour
 
     void Start()
     {
+        music.SetActive(false);
         storyPanel.SetActive(true);
         Time.timeScale = 0f;
         player.enabled = false;
@@ -57,6 +60,7 @@ public class StoryManagerLevel4 : MonoBehaviour
 
     void CloseStory()
     {
+        music.SetActive(true);
         storyPanel.SetActive(false);
         Time.timeScale = 1f;
         player.enabled = true;

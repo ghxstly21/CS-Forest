@@ -3,7 +3,7 @@ using UnityEngine;
 public class FinalSenBoss : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHealth = 20;
+    public int maxHealth = 200;
     private int currentHealth;
 
     [Header("Enemy Prefabs")]
