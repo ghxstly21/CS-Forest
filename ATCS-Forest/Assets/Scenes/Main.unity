@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesLeftText: {fileID: 293275657}
-  nextSceneIndex: 4
+  nextSceneIndex: 3
 --- !u!1 &119985007
 GameObject:
   m_ObjectHideFlags: 0
