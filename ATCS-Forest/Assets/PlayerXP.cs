@@ -37,7 +37,7 @@ public class PlayerXP : MonoBehaviour
         {
             new UpgradeOption(
                 "Projectile Prodigy",
-                () => $"Fire {shoot.projectileCount + 1} projectiles per shot.",  // dynamic description
+                () => $"Fire {PlayerShoot.projectileCount + 1} projectiles per shot.",  // dynamic description
                 () => { shoot.IncreaseProjectileCount(); }
             ),
             new UpgradeOption(

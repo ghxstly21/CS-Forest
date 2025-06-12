@@ -9,9 +9,9 @@ public class PlayerShoot : MonoBehaviour
 
     [Header("Stats")]
     public float shootCooldown = 0.5f;
-    public float bulletSpeed = 10f;
-    public int projectileCount = 1;
-    public int damage = 1;
+    public static float bulletSpeed = 10f;
+    public static int projectileCount = 1;
+    public static int damage = 1;
 
     private float cooldownTimer = 0f;
     private PlayerControls controls;
