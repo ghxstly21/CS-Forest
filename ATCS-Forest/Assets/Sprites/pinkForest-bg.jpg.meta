@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pinkForest-bg_0: -4226135669040365494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
