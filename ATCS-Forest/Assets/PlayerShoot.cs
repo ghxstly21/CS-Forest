@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using hi;
+
 public class PlayerShoot : MonoBehaviour
 {
-    public GameObject projectilePrefab;   // The bullet prefab (must have Rigidbody2D)
-    public Transform shootPoint;          // Where the bullet comes from
-    public float shootCooldown = 0.5f;    // Time between shots
-    public float bulletSpeed = 10f;       // Speed of the bullet
+    public GameObject projectilePrefab;
+    public Transform shootPoint;
+
+    [Header("Stats")]
+    public float shootCooldown = 0.5f;
+    public static float bulletSpeed = 10f;
+    public static int projectileCount = 1;
+    public static int damage = 1;
 
     private float cooldownTimer = 0f;
     private PlayerControls controls;
@@ -41,20 +46,35 @@ public class PlayerShoot : MonoBehaviour
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePos.z = 0f;
-
         Vector3 direction = (mousePos - shootPoint.position).normalized;
 
-        GameObject bullet = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        float spreadAngle = 10f;
+        float startAngle = -(spreadAngle * (projectileCount - 1)) / 2f;
 
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        for (int i = 0; i < projectileCount; i++)
         {
-            rb.linearVelocity = direction * bulletSpeed;
-        }
+            float angleOffset = startAngle + i * spreadAngle;
+            Quaternion rotation = Quaternion.AngleAxis(angleOffset, Vector3.forward);
+            Vector3 shotDirection = rotation * direction;
 
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+            GameObject bullet = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+                rb.linearVelocity = shotDirection * bulletSpeed;
+
+            float angle = Mathf.Atan2(shotDirection.y, shotDirection.x) * Mathf.Rad2Deg;
+            bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            ProjectileNew proj = bullet.GetComponent<ProjectileNew>();
+            if (proj != null)
+                proj.damage = damage;
+        }
 
         cooldownTimer = shootCooldown;
     }
+
+    public void IncreaseProjectileCount() => projectileCount++;
+    public void IncreaseDamage() => damage++;
+    public void IncreaseBulletSpeed() => bulletSpeed += 5f;
 }

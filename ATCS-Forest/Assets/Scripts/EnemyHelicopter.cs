@@ -6,22 +6,23 @@ public class EnemyHelicopter : MonoBehaviour
     public event EnemyDeathHandler OnEnemyDeath;
 
     public float speed = 2f;
+    public float xpDrop = 25f;
     public float stopDistance = 5f;
     public Transform enemyShootPoint;
     public GameObject projectilePrefab;
     public float shootCooldown = 1.5f;
-    public int maxHealth = 3;
+    public float maxHealth = 3;
 
     private Transform player;
     private Animator animator;
     private float shootTimer;
-    private int health;
+    private float health;
 
     private Vector2 noiseOffset;
 
     // Invincibility
     private bool isInvincible = false;
-    private float invincibilityDuration = 1f;  // 1 second invincibility
+    private float invincibilityDuration = 0.4f;  // 1 second invincibility
     private float invincibilityTimer = 0f;
 
     void Start()
@@ -123,7 +124,7 @@ public class EnemyHelicopter : MonoBehaviour
         Debug.Log("Enemy shooting projectile at time: " + Time.time);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (isInvincible)
         {
@@ -150,6 +151,11 @@ public class EnemyHelicopter : MonoBehaviour
 
     void Die()
     {
+        PlayerXP playerXP = Object.FindAnyObjectByType<PlayerXP>();
+        if (playerXP != null)
+        {
+            playerXP.GainXP(25);
+        }
         Debug.Log($"{gameObject.name} died.");
         OnEnemyDeath?.Invoke();
         Destroy(gameObject);

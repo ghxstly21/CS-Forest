@@ -1,40 +1,37 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    public GameObject playerPrefab; // assigned in inspector
-    //Setting spawn position; can be changed later
-    private static float xPosition = -7.5f; 
-    private static float yPosition = -3.3f;
-    private Vector3 spawnPosition = new Vector3(xPosition, yPosition, 1);
-
-    public void Start()
+    void Start()
     {
-        if (playerPrefab is null)
+        StartCoroutine(WaitAndSetCharacter());
+    }
+
+    private IEnumerator WaitAndSetCharacter()
+    {
+        // Wait a couple frames to make sure the scene is fully initialized
+        yield return null;
+        yield return null;
+
+        GameObject player = GameObject.FindWithTag("Player");
+
+        if (player == null)
         {
-            Debug.LogError("Player prefab not assigned!");
-            return;
+            Debug.LogError("No player found in scene.");
+            yield break;
         }
 
-        GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
         SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
 
-        if (sr is not null && PlayerSelection.chosenSprite is not null)
+        if (sr != null && PlayerSelection.chosenSprite != null)
         {
             sr.sprite = PlayerSelection.chosenSprite;
-            if (PlayerSelection.chosenCharacterName == "Sam")
-            {
-                sr.flipX = true;  // flips The Sam to face right
-            }
-            else
-            {
-                sr.flipX = false; // default facing direction
-            }
+            sr.flipX = PlayerSelection.chosenCharacterName == "Sam";
         }
         else
         {
-            Debug.LogWarning("SpriteRenderer or chosenSprite missing!");
+            Debug.LogWarning("SpriteRenderer or chosen sprite is missing.");
         }
-       
     }
 }
