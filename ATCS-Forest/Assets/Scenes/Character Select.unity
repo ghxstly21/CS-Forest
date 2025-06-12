@@ -235,7 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84e2c67ea5746d78df0e3bc4788cef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 2198113418895804327, guid: 419c1429d6c2f47518799292f308246a, type: 3}
   samSprite: {fileID: 3763752930381237044, guid: 65f277163903be64a9e5adf42c977dab, type: 3}
   ryanSprite: {fileID: -3519605799669109593, guid: 36ca3c0a605faae41a576225c21fb75a, type: 3}
   miguelSprite: {fileID: 2044687700991373437, guid: 839a6022d3f38934e8b0fb76e351852e, type: 3}

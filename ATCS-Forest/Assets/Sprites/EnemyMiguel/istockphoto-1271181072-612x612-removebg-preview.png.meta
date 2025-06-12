@@ -135,6 +135,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -459,7 +472,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      istockphoto-1271181072-612x612-removebg-preview_0: 8359124691965470686
+      istockphoto-1271181072-612x612-removebg-preview_1: -7523397521647640928
+      istockphoto-1271181072-612x612-removebg-preview_10: -8810223257582587506
+      istockphoto-1271181072-612x612-removebg-preview_11: 1726798837629786039
+      istockphoto-1271181072-612x612-removebg-preview_12: -6237786747797633354
+      istockphoto-1271181072-612x612-removebg-preview_13: -5141816722328724948
+      istockphoto-1271181072-612x612-removebg-preview_2: -2593337273027843970
+      istockphoto-1271181072-612x612-removebg-preview_3: -7437913904056983708
+      istockphoto-1271181072-612x612-removebg-preview_4: -9171600730494495211
+      istockphoto-1271181072-612x612-removebg-preview_5: -6106065623347098562
+      istockphoto-1271181072-612x612-removebg-preview_6: 8951329268650364339
+      istockphoto-1271181072-612x612-removebg-preview_7: -959206601398832217
+      istockphoto-1271181072-612x612-removebg-preview_8: 3053368277870131887
+      istockphoto-1271181072-612x612-removebg-preview_9: 5275789677508925063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
