@@ -3533,7 +3533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1362529872}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: RespawnLevel2
+        m_MethodName: RespawnLevel3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

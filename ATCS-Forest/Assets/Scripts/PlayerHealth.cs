@@ -47,6 +47,14 @@ public class PlayerHealth : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+    public void RespawnLevel3()
+    {
+        SceneManager.LoadScene(4);
+    }
+    public void RespawnLevel4()
+    {
+        SceneManager.LoadScene(5);
+    }
 
     // 👇 ADD THESE TWO METHODS
     public void RestoreToFull()
