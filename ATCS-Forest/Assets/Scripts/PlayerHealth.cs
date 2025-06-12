@@ -57,8 +57,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void IncreaseMaxHealth()
     {
-        maxHealth += 1;
-        currentHealth = maxHealth;
-        Debug.Log("💪 Max health increased to " + maxHealth + " and healed to full.");
+        int increaseAmount = 5;
+        maxHealth += increaseAmount;
+        currentHealth += increaseAmount;
+        Debug.Log("💪 Max health increased to " + maxHealth + " and added " + increaseAmount + " HP.");
     }
 }
