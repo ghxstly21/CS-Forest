@@ -5,6 +5,6 @@ public class StartButton : MonoBehaviour
 {
     public void Go()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
