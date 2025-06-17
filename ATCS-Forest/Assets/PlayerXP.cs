@@ -84,14 +84,13 @@ public class PlayerXP : MonoBehaviour
     void LevelUp()
     {
         currentLevel++;
-        Time.timeScale = 0f; // Pause game
+        Time.timeScale = 0f; 
         levelUpPanel.SetActive(true);
         ShowUpgradeChoices();
     }
 
     void ShowUpgradeChoices()
     {
-        // Pick 3 unique random upgrades
         List<int> chosenIndexes = new List<int>();
         while (chosenIndexes.Count < 3)
         {
@@ -109,7 +108,7 @@ public class PlayerXP : MonoBehaviour
             upgradeDescriptions[i].text = option.GetDescription();
 
             upgradeButtons[i].onClick.RemoveAllListeners();
-            int buttonIndex = i; // avoid closure issue
+            int buttonIndex = i; 
             upgradeButtons[i].onClick.AddListener(() =>
             {
                 ChooseUpgrade(allUpgrades[chosenIndexes[buttonIndex]]);
@@ -126,7 +125,7 @@ public class PlayerXP : MonoBehaviour
     void CloseLevelUpPanel()
     {
         levelUpPanel.SetActive(false);
-        Time.timeScale = 1f; // Resume game
+        Time.timeScale = 1f; 
         UpdateUI();
     }
 }

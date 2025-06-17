@@ -41,7 +41,7 @@ public class ProjectileNew : MonoBehaviour
             else if (collision.TryGetComponent(out FinalSenBoss finalSen))
             {
                 finalSen.TakeDamage((int)damage);
-                Debug.Log("Hit FINAL SEN BOSS for " + damage + " damage.");
+                Debug.Log("Hit SEN BOSS for " + damage + " damage.");
             }
 
 

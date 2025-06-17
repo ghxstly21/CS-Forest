@@ -2440,7 +2440,7 @@ MonoBehaviour:
   patrolRange: 3
   enemyShootPoint: {fileID: 600486341}
   projectilePrefab: {fileID: 2494781381158503396, guid: aba73a1c0b7403947be987eeeb708890, type: 3}
-  shootCooldown: 1
+  shootCooldown: 2
   maxHealth: 5
   xpDrop: 30
 --- !u!4 &766012719 stripped
@@ -2749,7 +2749,7 @@ MonoBehaviour:
   patrolRange: 3
   enemyShootPoint: {fileID: 285364818}
   projectilePrefab: {fileID: 2494781381158503396, guid: aba73a1c0b7403947be987eeeb708890, type: 3}
-  shootCooldown: 1
+  shootCooldown: 2
   maxHealth: 5
   xpDrop: 30
 --- !u!4 &983920791 stripped
@@ -3377,7 +3377,7 @@ MonoBehaviour:
   patrolRange: 3
   enemyShootPoint: {fileID: 875091544}
   projectilePrefab: {fileID: 2494781381158503396, guid: aba73a1c0b7403947be987eeeb708890, type: 3}
-  shootCooldown: 1
+  shootCooldown: 2
   maxHealth: 5
   xpDrop: 30
 --- !u!1 &1251875810
@@ -3872,7 +3872,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentXP: 0
-  xpToNextLevel: 100
   xpBar: {fileID: 456006354}
   levelText: {fileID: 49565}
   levelUpPanel: {fileID: 1821734341}
@@ -4924,6 +4923,10 @@ PrefabInstance:
     - target: {fileID: 3801543991775218004, guid: 71c0e933e26838441be03b95344659cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042502278152416366, guid: 71c0e933e26838441be03b95344659cd, type: 3}
+      propertyPath: shootCooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8365959011921320845, guid: 71c0e933e26838441be03b95344659cd, type: 3}
       propertyPath: m_Name
